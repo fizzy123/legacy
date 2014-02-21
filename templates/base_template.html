@@ -1,0 +1,127 @@
+{% load staticfiles %}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Nova+Round|Istok+Web:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <script type="text/javascript"
+            src="{% static 'jquery-2.0.3.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'jquery-ui-1.10.4.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'jquery.cookie.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'jquery.ui.autocomplete.css' %}">
+    <link rel="stylesheet" href="{% static 'basic.css' %}">
+    <title>Legacy</title>
+    <script>
+    
+    $(document).ready(function() {
+        var csrftoken = $.cookie('csrftoken');
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }   
+        $.ajaxSetup({
+            //crossDomain: false, // obviates need for sameOrigin test
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type)) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+        var friends;    
+        $.ajaxSetup({ cache: true });
+        $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+            FB.init({
+                appId: '1435014210069366',
+                status: true,
+                cookie: true,
+                xfbml: true,
+            });     
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    FB.api("/me/friends?fields=name,id,picture,location", function(data) {
+                        friends = data.data;
+                    });
+                   {% block fb_js %}
+                   {% endblock %} 
+                   console.log('Logged in');
+                   var user_id = response.authResponse.userID;
+                   $.cookie("user_id",user_id,{domain:'108.234.92.163', path:'/'});
+                } else {
+                    window.location = "/";
+                }
+            });
+            
+            $('#loginbutton,#feedbutton').removeAttr('disabled');
+
+            $("#search-input").keypress(function( event ) {
+                if (event.which == 13 ){
+                    window.location = "/search?q=" + $("#search-input").val();
+                }
+            });
+            
+            $("#search-input").autocomplete({
+                minLength:0,
+                source: function(request, response) {
+                    FB.api("/search?q=" + request.term + "&type=user&fields=name,id,picture", function(data){
+                        if (typeof data.data != 'undefined'){
+                            var dataset = data.data.reverse().slice(0,5);
+                            var people = [];
+                            
+                            friends.forEach(function(friend) {
+                                var fb_location = ''
+                                console.log(friend);
+                                if (friend.hasOwnProperty('location')){
+                                    console.log(friend.location);
+                                    fb_location = friend.location.name;
+                                }    
+                                if (friend.name.toLowerCase().search(request.term.toLowerCase()) != -1) {
+                                    people.push({name:friend.name,id:friend.id,picture:friend.picture.data.url, desc:fb_location});
+                                }
+                            });
+
+                            var i = 0;
+                            while (people.length < 5) {
+                                t = dataset[i];
+                                people.push({name:t.name,id:t.id,picture:t.picture.data.url, desc:''});
+                                i++;
+                            }
+                            i = 0;
+                            response(people);
+                        };
+                    });
+                },
+                focus: function (event, ui) {
+                    $("#search-input").val(ui.item.name);
+                    return false;
+                },
+                select: function(event, ui){
+                    window.location = "/comments/" + ui.item.id + "/"; 
+                }               
+            })
+            .data("ui-autocomplete")._renderItem = function( ul, item) {
+                return $("<li>")
+                    .append("<a style='height:60px'><img style='position:relative;top:6px;float:left' src='"+item.picture+"'><div style='margin-left:5px;position:relative;top:-1px;'><b>"+item.name+"</b><br>"+item.desc+"</div></a>")
+                    .appendTo(ul);
+            };
+            
+        });
+    {% block javascript %}
+    {% endblock %}
+    });
+    </script>
+</head>
+
+<body>
+<div class="header">
+    <div class="header-body">
+        <div class="title logo">Legacy</div>
+        <input id="search-input" class="search body">
+    </div>
+</div> 
+
+{% block content %}
+{% endblock %}
+</body>
+</html>

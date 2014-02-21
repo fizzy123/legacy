@@ -1,0 +1,124 @@
+{% load staticfiles %}
+
+<html>
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Nova+Round|Istok+Web:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <script type="text/javascript"
+            src="{% static 'jquery-2.0.3.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'jquery-ui-1.10.4.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'jquery.ui.autocomplete.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'basic.css' %}">
+    <title>Legacy</title>
+    <script>
+    $(document).ready(function() {
+        var toggle = true;
+        $('#main-image').children(".slide").each(function(){
+            if (toggle) {
+                $(this).children().each(function(){
+                    $(this).toggle("slide", {direction:'left'});
+                });
+                $(this).mouseenter(function () {
+                    $(this).children().each(function(){
+                        $(this).toggle("slide", {direction:'left'});
+                  });
+                });
+            } else {
+                $(this).children().each(function(){
+                    $(this).toggle("slide", {direction:'right'});
+                });
+                $(this).mouseenter(function () {
+                    $(this).children().each(function(){
+                        $(this).toggle("slide", {direction:'right'});
+                  });
+                });
+            }
+            toggle = !toggle;
+        });
+        $.ajaxSetup({ cache: true });
+        $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+            FB.init({
+                appId: '1435014210069366',
+                status: true,
+                cookie: true,
+                xfbml: true,
+            });     
+            FB.Event.subscribe('auth.login', function(response) {
+                alert("Logged in.. Redirecting you now...");
+                window.location = "/search";
+            });
+            
+            $('#loginbutton,#feedbutton').removeAttr('disabled');
+        });
+        $("#login-button").click(function() {
+            FB.login(function(response) {
+                window.location = "/search";
+            }, {scope:'friends_location'})
+        });
+    });
+    </script>
+</head>
+
+<body style="background-color:white">
+<div class="base-poster" id="main-image">
+    <div class="segment-container slide">
+        <div class="desc cover-segment">
+            <div class="text-container">
+            Beauty
+            </div>
+        </div>
+    </div>
+    <div class="segment-container slide">
+        <div class="desc cover-segment">
+            <div class="text-container">
+            Artist
+            </div>
+        </div>
+    </div>
+    <div class="segment-container slide">
+        <div class="desc cover-segment">
+            <div class="text-container">
+            Rebel
+            </div>
+        </div>
+    </div>
+    <div class="segment-container">
+        <div class="cover-title cover-segment">
+            <div class="title-text-container">
+            Legacy
+            </div>
+        </div>
+    </div>    
+    <div class="segment-container slide">
+        <div class="desc cover-segment">
+            <div class="text-container">
+            Warrior
+            </div>
+        </div>
+    </div>
+    <div class="segment-container slide">
+        <div class="desc cover-segment">
+            <div class="text-container">
+            Leader
+            </div>
+        </div>
+    </div>
+    <div class="segment-container slide">
+        <div class="desc cover-segment">
+            <div class="text-container">
+            Celebrity
+            </div>
+        </div>
+    </div>
+    <div class="segment-container">
+        <div class="slogan cover-segment">
+            <div class="slogan-text-container">
+            How will you be remembered?
+            </div>
+        </div>
+    </div>
+</div>
+<div id="login-button"class="cover-segment cover-title" style="width:563px;height:102px;background-color:#7282b0;color:white;display:block;margin-left:auto;margin-right:auto;padding-top:10px;cursor:pointer"><div class="title-text-container">Log In</div></div>
+</body>
+</html>
