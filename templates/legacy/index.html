@@ -1,0 +1,79 @@
+{% extends "legacy/base_template.html" %}
+
+{% load staticfiles %}
+
+{% block javascript %}
+$('#header').css('height','0px');
+redirect = true;
+{% endblock %}
+
+{% block fb_logged_out_js %}
+$("#login-button").click(function() {
+            FB.login(function(response) {
+                $('#header').animate({
+                    height: '55px'
+                }, 500);
+
+            }, {scope:'friends_location'})
+        });
+{% endblock %}        
+
+{% block content %}
+<div class="content">
+    <div class="cover-body">
+        <div class="base-poster">
+            <div class="slogan-body">
+                <div class="slogan">
+                    Legacy
+                </div>
+                <div class="slogan-subtitle">
+                    Discover reputations. Learn peer opinions. Contribute your own.
+                </div>    
+            </div>    
+            <div id="login-button"></div>
+        </div>
+
+        <div class="cover-desc">
+        <div class="cover-segment">
+            <img src="{% static 'legacy/legacy_cover_pic2.jpg' %}" style="float:right;">
+            <div class="cover-segment-title">
+                Review People 
+            </div>
+            <div class="cover-segment-desc">
+                Let others know what you think. Every opinion you share gives others more information. Who knows? Your comment could help a friend land a job or score a date.
+            </div>   
+        </div>
+        <hr>
+        <div class="cover-segment">
+            <img src="{% static 'legacy/legacy_cover_pic1.jpg' %}" style="float:left;">
+            <div class="cover-segment-title">
+                Find Anyone
+            </div>
+            <div class="cover-segment-desc">
+                By using Facebook's database of users, we provide the ability to find anyone on facebook, whether it be friends, co-workers, or even people you haven't met yet.
+            </div>   
+        </div>
+        <hr>
+        <div class="cover-segment">
+            <img src="{% static 'legacy/legacy_cover_pic3.jpg' %}" style="float:right;">
+            <div class="cover-segment-title">
+                Vote
+            </div>
+            <div class="cover-segment-desc">
+                Upvotes and downvotes let you show others which comments are helpful and which comments aren't. See a comment that said what you wanted to say, but way better? Upvote it. See a comment that's mean, unhelpful or just wrong? Downvote that sucker. 
+            </div>   
+        </div>
+        <hr>
+        <div class="cover-segment">
+            <img src="{% static 'legacy/legacy_cover_pic4.jpg' %}" style="float:left;">
+            <div class="cover-segment-title">
+                Be Nice 
+            </div>
+            <div class="cover-segment-desc">
+                Legacy isn’t a pulpit where you can just complain about all the people you dislike. It’s supposed to be informative and helpful.If you don’t like someone, don’t use mean or cruel language. Describe the particular things you don’t like about this person as impartially as possible.
+            </div>   
+        </div>
+        </div>
+    </div>         
+</div>
+{% endblock %}

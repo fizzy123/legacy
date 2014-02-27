@@ -1,0 +1,280 @@
+body {
+background: #a2a2a2;
+font-family: 'Istok Web', sans-serif;
+margin:0;
+}
+
+div {
+display:inline-block;
+}
+
+hr {
+color: #797979;
+background-color: #797979;
+border: 0px;
+height: 1px;
+width: 40%;
+}
+
+input:focus,textarea:focus {
+outline: 0;
+}
+
+input,textarea{
+border: 0px solid;
+font-family: 'Istok Web', sans-serif;
+}  
+
+textarea::-webkit-input-placeholder{
+color: #7f7f7f
+}
+textarea:-moz-placeholder{
+color: #7f7f7f
+}
+textarea:::-moz-placeholder{
+color: #7f7f7f
+}
+textarea:-ms-input-placeholder {
+color: #7f7f7f
+}
+
+.base-poster {
+width: 1000px;
+height: 400px;
+background-image:url('legacy_cover.jpg');
+background-size:1000px 1456px;
+background-position:0px -470px;
+display: block;
+margin-left:auto;
+margin-right:auto;
+font-family: 'Nova Round', cursive;
+text-align:center;
+}
+
+.desc {
+background-color: black;
+color:white;
+font-size:200%;
+}
+
+.cover-title {
+background-color: white;
+color: #731c1c;
+font-size:300%;
+}
+
+.title a {
+text-decoration: none;
+color: inherit;
+}
+
+.title {
+background-color: white;
+color: #731c1c;
+font-size:200%;
+}
+
+.logo {
+font-family: 'Nova Round', cursive;
+position:relative;
+top:4px;
+margin-right:3px
+}
+
+.slogan-body {
+width:100%;
+margin-top:85px;
+height:150px;
+background-color:white;
+}
+
+.slogan {
+margin-top:10px;
+color:#731c1c;
+font-size:400%;
+width:100%
+}
+
+.slogan-subtitle{
+width:100%;
+font-size:120%;
+margin-top: 15px;
+}
+
+#login-button {
+cursor: pointer;
+background-image: url('/static/fb_login_button.jpg');
+background-size: 113px 30px;
+width: 113px;
+height: 30px;
+margin-top: 60px;
+}
+
+.cover-desc {
+margin-top:5px;
+background-color:#4d4d4d;
+}
+
+.cover-segment {
+width 100%;
+height: 200px;
+color:white;
+text-align:left;
+}
+
+.cover-segment img {
+width: 540px;
+margin: 10px;
+}
+
+.cover-segment-title {
+font-family: 'Nova Round', cursive;
+font-size: 250%;
+margin-top: 17px;
+margin-left: 15px;
+}
+
+.cover-segment-desc {
+width: 380px;
+margin-top: 17px;
+margin-left: 16px;
+font-size: 90%;
+color: #cecece;
+}
+
+.header {
+background-color: white;
+width: 100%;
+height: 55px;
+text-align:center;
+margin:0px;
+}
+
+.search {
+background-color:#dadada;
+height: 28px;
+font-size:110%;
+color:#7e7e7e;
+padding-left: 5px;
+padding-top: 5px;
+position: relative;
+top: 1px;
+}
+
+.body {
+width: 800px;
+}
+
+.content {
+text-align:center;
+width: 100%
+}
+
+.content-body {
+width:821px;
+position:relative;
+left:19px;
+text-align:right;
+}
+
+.cover-body {
+width:1000px;
+position:relative;
+left:15px;
+}
+
+.header-body {
+width:914px;
+position:relative;
+right:27px;
+}
+
+.person-desc {
+text-align:left;    
+width: 800px;
+background-color:#dadada;
+height: 100px;
+margin-top:5px;
+}
+
+.person-name {
+font-family: 'Nova Round', cursive;
+color: #731c1c;
+font-size:200%;
+text-decoration:none;
+margin-left:5px;
+}
+
+.person-location {
+color:#7e7e7e;
+}
+
+.person-text {
+margin-top:5px;
+margin-left:5px;
+}
+
+.person-desc img {
+width: 100px;
+height: 100px;
+float: left;
+}
+
+.input-box {
+font-size:90%;    
+}
+
+.input {
+width: 100%;
+background-color:#b8b8b8;
+color:#444444;
+margin:0px;
+min-height:100px;
+font-size:100%;
+}
+
+.submit {
+width: 100%;
+background-color:#b95050;
+color:#7d3636;
+margin:0px;
+font-size:150%;
+height:40px;
+}
+
+.comment {
+margin-bottom:5px;    
+Width:100%
+}
+
+.comments {
+width:821px;
+}
+
+.comment-body {
+width:800px;    
+background-color:#ffffff;
+text-align:left;
+}
+
+.vote {
+float:left;
+width:21px;
+left:-21px;
+cursor:pointer;
+}
+
+.comment-header {
+color:#b8b8b8;
+font-size:77%;
+width:100%;
+margin-top: 2px;
+margin-left: 5px;
+}
+
+.comment-text {
+font-size: 90%;
+width: 98%;
+margin-left: 5px;
+margin-bottom: 3px;
+}
