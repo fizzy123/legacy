@@ -13,7 +13,7 @@ $("#login-button").click(function() {
                 $('#header').animate({
                     height: '55px'
                 }, 500);
-
+                $("html, body").animate({ scrollTop: 0 }, 1000);
             }, {scope:'friends_location'})
         });
 {% endblock %}        
@@ -27,52 +27,41 @@ $("#login-button").click(function() {
                     Legacy
                 </div>
                 <div class="slogan-subtitle">
-                    Discover reputations. Learn peer opinions. Contribute your own.
+                    How are you being remembered?
                 </div>    
             </div>    
             <div id="login-button"></div>
         </div>
 
         <div class="cover-desc">
-        <div class="cover-segment">
-            <img src="{% static 'legacy/legacy_cover_pic2.jpg' %}" style="float:right;">
-            <div class="cover-segment-title">
-                Review People 
+            <div class="cover-segment">
+                <div class="cover-segment-title">
+                    Write reviews of people
+                </div>
+                <div class="cover-segment-desc">
+                    Everyone leaves behind an impression. No matter how small or trivial the interaction, you always walk away with an opinion of that other person. Legacy lets you make your opinions known by providing a place where you can review them anonymously.
+                </div>   
             </div>
-            <div class="cover-segment-desc">
-                Let others know what you think. Every opinion you share gives others more information. Who knows? Your comment could help a friend land a job or score a date.
-            </div>   
         </div>
-        <hr>
-        <div class="cover-segment">
-            <img src="{% static 'legacy/legacy_cover_pic1.jpg' %}" style="float:left;">
-            <div class="cover-segment-title">
-                Find Anyone
+        <div class="cover-desc" style="background-color:#363636">
+            <div class="cover-segment">
+                <div class="cover-segment-title">
+                    Read other people's reviews
+                </div>
+                <div class="cover-segment-desc">
+                    Ever meet a person and have no idea how to act? Reviews left by other people can clue you in on what to talk about, what kind of jokes to make, and how to interact with them.
+                </div>   
             </div>
-            <div class="cover-segment-desc">
-                By using Facebook's database of users, we provide the ability to find anyone on facebook, whether it be friends, co-workers, or even people you haven't met yet.
-            </div>   
         </div>
-        <hr>
-        <div class="cover-segment">
-            <img src="{% static 'legacy/legacy_cover_pic3.jpg' %}" style="float:right;">
-            <div class="cover-segment-title">
-                Vote
+        <div class="cover-desc">
+            <div class="cover-segment">
+                <div class="cover-segment-title">
+                    Discover your own Legacy
+                </div>
+                <div class="cover-segment-desc" style="margin-bottom:35px">
+                    Use your own page to find out what other people think of you. Legacy shows you what qualities people most admire in you and what qualities you can strive to improve.
+                </div>   
             </div>
-            <div class="cover-segment-desc">
-                Upvotes and downvotes let you show others which comments are helpful and which comments aren't. See a comment that said what you wanted to say, but way better? Upvote it. See a comment that's mean, unhelpful or just wrong? Downvote that sucker. 
-            </div>   
-        </div>
-        <hr>
-        <div class="cover-segment">
-            <img src="{% static 'legacy/legacy_cover_pic4.jpg' %}" style="float:left;">
-            <div class="cover-segment-title">
-                Be Nice 
-            </div>
-            <div class="cover-segment-desc">
-                Legacy isn’t a pulpit where you can just complain about all the people you dislike. It’s supposed to be informative and helpful.If you don’t like someone, don’t use mean or cruel language. Describe the particular things you don’t like about this person as impartially as possible.
-            </div>   
-        </div>
         </div>
     </div>         
 </div>

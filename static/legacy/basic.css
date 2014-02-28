@@ -111,15 +111,13 @@ margin-top: 60px;
 }
 
 .cover-desc {
-margin-top:5px;
 background-color:#4d4d4d;
 }
 
 .cover-segment {
 width 100%;
-height: 200px;
 color:white;
-text-align:left;
+text-align:center;
 }
 
 .cover-segment img {
@@ -129,16 +127,13 @@ margin: 10px;
 
 .cover-segment-title {
 font-family: 'Nova Round', cursive;
-font-size: 250%;
-margin-top: 17px;
-margin-left: 15px;
+font-size: 200%;
+margin-top: 30px;
 }
 
 .cover-segment-desc {
-width: 380px;
-margin-top: 17px;
-margin-left: 16px;
-font-size: 90%;
+margin: 18px 25px 25px 25px;    
+font-size: 100%;
 color: #cecece;
 }
 
