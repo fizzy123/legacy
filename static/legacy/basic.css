@@ -261,6 +261,14 @@ left:-21px;
 cursor:pointer;
 }
 
+.upvotes {
+color: #4bae4b
+}
+
+.downvotes {
+color: #b95050
+}
+
 .comment-header {
 color:#b8b8b8;
 font-size:77%;
