@@ -60,6 +60,11 @@
                    $('#header').animate({
                        height: '55px'
                    }, 500);    
+                   $('#login-button').fadeOut(500, function() {
+                       $(this).css('background-color','#2E3F66');
+                       $(this).css('font-size', '140%');
+                       $(this).text("Thanks for logging in! Why don't you start searching for people?").fadeIn(500);
+                   });
                 } else {
                     if (!redirect){
                         window.location = "/legacy/";
