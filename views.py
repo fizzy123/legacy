@@ -39,6 +39,7 @@ def add(request, user_id):
     comment = Comment(owner=person, text = request.POST['text'])
     person.save()
     comment.save()
+    vote(request, comment.pk)
     return HttpResponseRedirect(reverse('legacy:comments', args=(user_id,)))
 
 def vote(request, comment_id):
