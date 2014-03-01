@@ -1,4 +1,5 @@
 import json
+from random import choice
 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
@@ -31,7 +32,11 @@ def comments(request, user_id):
         comment_dict['down_active'] = comment in Person.objects.get_or_create(user = request.COOKIES.get('user_id'))[0].downvotes.all()
         comment_list.append(comment_dict)
     comment_list = sorted(comment_list, key=lambda comment:comment['upvotes']-comment['downvotes'], reverse=True)    
-    context = {'comments':comment_list,'user_id':user_id}
+    suggestion = ['what this person likes or dislikes', 
+                  'why you would or wouldn\'t date this person',
+                  'your most/least favorite thing about this person',
+                  'what this person is really good/bad at']
+    context = {'comments':comment_list,'user_id':user_id,'suggestion':choice(suggestion)}
     return render(request, 'legacy/person.html', context)
 
 def add(request, user_id):

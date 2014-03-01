@@ -55,7 +55,7 @@
         <div class='input-box body'>
             <form action="/legacy/add/{{ user_id }}/" method="post">
                 {% csrf_token %}
-                <textarea rows="4" cols="50" class="input" name="text" placeholder="Write your comment here." required></textarea>
+                <textarea rows="4" cols="50" class="input" name="text" placeholder="Having trouble thinking of something to say? Tell us {{ suggestion }}." required></textarea>
                 <input type='hidden' name='vote' value='up'>
                 <input type="submit" value="Comment" class="submit">
             </form>
