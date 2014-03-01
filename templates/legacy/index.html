@@ -10,10 +10,17 @@ redirect = true;
 {% block fb_logged_out_js %}
 $("#login-button").click(function() {
             FB.login(function(response) {
-                $('#header').animate({
-                    height: '55px'
-                }, 500);
-                $("html, body").animate({ scrollTop: 0 }, 1000);
+                if (response.authResponse){
+                    $('#header').animate({
+                        height: '55px'
+                    }, 500);
+                    $("html, body").animate({ scrollTop: 0 }, 1000);
+                    $('#login-button').fadeOut(500, function() {
+                        $(this).css('background-color','#2E3F66');
+                        $(this).css('font-size', '140%');
+                        $(this).text("Thanks for logging in! Why don't you start searching for people?").fadeIn(500);
+                    });
+                }
             }, {scope:'friends_location'})
         });
 {% endblock %}        
@@ -30,7 +37,7 @@ $("#login-button").click(function() {
                     How are you being remembered?
                 </div>    
             </div>    
-            <div id="login-button"></div>
+            <div id="login-button">Login with Facebook</div>
         </div>
 
         <div class="cover-desc">

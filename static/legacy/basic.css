@@ -103,11 +103,13 @@ margin-top: 15px;
 
 #login-button {
 cursor: pointer;
-background-image: url('/static/fb_login_button.jpg');
-background-size: 113px 30px;
-width: 113px;
-height: 30px;
-margin-top: 60px;
+cursor: pointer;
+width: 100%;
+margin-top: 100px;
+color: white;
+padding: 20px 0px;
+font-size: 150%;
+background-color:#50679d;
 }
 
 .cover-desc {
